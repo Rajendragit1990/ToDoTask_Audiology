@@ -1,6 +1,7 @@
 package com.rajendra.todotask_audiology.presentation.todo_list.components
 
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -13,17 +14,21 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.rajendra.todotask_audiology.domain.models.Priority
 import com.rajendra.todotask_audiology.domain.models.ToDoTaskModel
 import com.rajendra.todotask_audiology.ui.theme.LARGE_PADDING
@@ -59,52 +64,61 @@ fun TaskItem(
     toDoTaskModel: ToDoTaskModel,
     onTaskSelected: (ToDoTaskModel) -> Unit
 ) {
-    Surface(
-        modifier = Modifier.fillMaxWidth(),
-        shape = RectangleShape,
-        onClick = {
-            onTaskSelected(toDoTaskModel)
-        }
-    ) {
-        Column(
-            modifier = Modifier
-                .padding(all = LARGE_PADDING)
-                .fillMaxWidth()
-        ) {
-            Row() {
-                Text(
-                    modifier = Modifier.weight(8f),
-                    text = toDoTaskModel.title,
-                    style = MaterialTheme.typography.headlineSmall,
-                    fontWeight = FontWeight.Bold,
-                    maxLines = 1
-                )
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .weight(1f),
-                    contentAlignment = Alignment.TopEnd
-                ) {
-                    Canvas(
-                        modifier = Modifier
-                            .width(PRIORITY_INDICATOR_SIZE)
-                            .height(
-                                PRIORITY_INDICATOR_SIZE
-                            ),
-                        onDraw = {
-                            drawCircle(color = Priority.entries[toDoTaskModel.priority].color)
-                        }
-                    )
-                }
-            }
+    Card(
+        modifier = Modifier
+            .padding(start = 16.dp, top = 8.dp, bottom = 8.dp, end = 16.dp)
+            .background(color = Color.White),
+        elevation = CardDefaults.cardElevation(defaultElevation = 5.dp),
+        shape = MaterialTheme.shapes.extraSmall
 
-            Text(
-                modifier = Modifier.fillMaxWidth(),
-                text = toDoTaskModel.description,
-                style = MaterialTheme.typography.titleMedium,
-                maxLines = 2,
-                overflow = TextOverflow.Ellipsis
-            )
+    ) {
+        Surface(
+            modifier = Modifier.fillMaxWidth(),
+            shape = RectangleShape,
+            onClick = {
+                onTaskSelected(toDoTaskModel)
+            }
+        ) {
+            Column(
+                modifier = Modifier
+                    .padding(all = LARGE_PADDING)
+                    .fillMaxWidth()
+            ) {
+                Row() {
+                    Text(
+                        modifier = Modifier.weight(8f),
+                        text = toDoTaskModel.title,
+                        style = MaterialTheme.typography.headlineSmall,
+                        fontWeight = FontWeight.Bold,
+                        maxLines = 1
+                    )
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .weight(1f),
+                        contentAlignment = Alignment.TopEnd
+                    ) {
+                        Canvas(
+                            modifier = Modifier
+                                .width(PRIORITY_INDICATOR_SIZE)
+                                .height(
+                                    PRIORITY_INDICATOR_SIZE
+                                ),
+                            onDraw = {
+                                drawCircle(color = Priority.entries[toDoTaskModel.priority].color)
+                            }
+                        )
+                    }
+                }
+
+                Text(
+                    modifier = Modifier.fillMaxWidth(),
+                    text = toDoTaskModel.description,
+                    style = MaterialTheme.typography.titleMedium,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis
+                )
+            }
         }
     }
 }
@@ -116,7 +130,7 @@ fun TaskItemPreview() {
         ToDoTaskModel(
             1,
             "Title 1",
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
+            "Description",
             Priority.HIGH.ordinal
         ),
         {},
@@ -131,7 +145,7 @@ fun TaskItemDarkModePreview() {
             ToDoTaskModel(
                 1,
                 "Title 1",
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
+                "Description",
                 Priority.HIGH.ordinal
             ),
             {},
