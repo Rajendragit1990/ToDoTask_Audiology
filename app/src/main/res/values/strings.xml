@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">ToDoTask_Audiology</string>
+    <string name="add_new_task_button">Add button</string>
+    <string name="add_new_task">New task</string>
+    <string name="tasks">Tasks</string>
+    <string name="search_tasks">Search tasks</string>
+    <string name="sort_tasks">Sort Tasks</string>
+    <string name="delete_all">Delete all tasks</string>
+    <string name="search">Search</string>
+    <string name="clear_text">Clear text</string>
+    <string name="close_icon">Close Icon</string>
+    <string name="search_icon">Search Icon</string>
+    <string name="sad_face">Sad Face Icon</string>
+    <string name="empty_content">No Tasks Found.</string>
+    <string name="ok_icon">OK Icon</string>
+    <string name="arrow_back">Back Arrow Icon</string>
+    <string name="new_task">New Task</string>
+    <string name="delete_icon">Delete Icon</string>
+    <string name="task">Task</string>
+    <string name="drop_down_arrow_icon">Drop-Down Arrow Icon</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="successfully_deleted_task_message">Task was deleted</string>
+    <string name="successfully_added_task_message">Task added</string>
+    <string name="successfully_saved_task_message">Task saved</string>
+    <string name="empty_task_message">Tasks cannot be empty</string>
+    <string name="alert_dialog_title">Confirm action</string>
+    <string name="alert_dialog_text">"This action will erase all tasks. Are your sure to proceed? "</string>
+    <string name="confirm">Confirm</string>
+    <string name="dismiss">Dismiss</string>
+    <string name="undo">UNDO</string>
+</resources>
